@@ -1,6 +1,6 @@
 # Contador de Calorias
 
-Una tienda virtual de guitarras desarrollada con React y TypeScript que permite agregar productos al carrito, modificar cantidades, eliminar items y vaciar el carrito. El estado del carrito se mantiene en `localStorage` para persistencia entre recargas.
+Aplicación web para planificar y controlar calorías consumidas y quemadas, permitiendo al usuario registrar actividades como comidas o ejercicios, modificarlas o eliminarlas, y visualizar un resumen dinámico de su balance calórico.
 
 ---
 
@@ -12,22 +12,26 @@ Una tienda virtual de guitarras desarrollada con React y TypeScript que permite 
 
 ## Características
 
-- Listado de guitarras con imagen, descripción y precio.
-- Añadir guitarras al carrito con control de cantidad mínima y máxima.
-- Incrementar y decrementar cantidad de productos en el carrito.
-- Eliminar productos individualmente.
-- Vaciar el carrito completo.
-- Persistencia automática usando `localStorage`.
+- Registro de actividades con categoría (Comida o Ejercicio), nombre y calorías.
+- Modificación y eliminación de actividades existentes.
+- Resumen dinámico del balance calórico:
+  - Calorías consumidas.
+  - Calorías quemadas.
+  - Total de calorías netas.
+- Animaciones para los contadores con cambios suaves.
+- Estado persistente en `localStorage` para mantener los datos entre sesiones.
 
 ---
 
 ## Tecnologías
 
-- React 19+
-- TypeScript 5.8+
+- **React 19+**
+- **TypeScript 5.8+**
 - Vite 7+
-- Hooks personalizados (`useCart`)
-- CSS con clases TailwindCSS 
+- TailwindCSS
+- Heroicons
+- UUID para identificación única
+- Hooks personalizados y patrón `useReducer`
 
 ---
 
@@ -36,8 +40,8 @@ Una tienda virtual de guitarras desarrollada con React y TypeScript que permite 
 Clona el repositorio y accede a la carpeta:
 
 ```bash
-git clone https://github.com/esotooo/carritoCompras.git
-cd carritoCompras
+git clone https://github.com/esotooo/ContadorCalorias.git
+cd ContadorCalorias
 ```
 
 Instala las dependencias:
@@ -61,43 +65,43 @@ http://localhost:5173
 
 ## Estructura principal
 
-- `src/components` – Componentes `Header`, `Guitar`, `Footer`.
-- `src/hooks/useCart.ts` – Hook personalizado para manejar la lógica del carrito.
-- `src/data/db.ts` – Base de datos simulada con las guitarras.
-- `src/types/types.ts` – Definiciones de tipos TypeScript.
-- `src/App.tsx` – Componente raíz que renderiza la app y conecta el carrito.
+- `src/components` — Formulario, lista de actividades, resumen de calorías.
+- `src/reducers` — Lógica de estado centralizado con `useReducer`.
+- `src/animations` — Animaciones personalizadas para los contadores.
+- `src/data/categories.ts` — Definición de categorías (`Comida` / `Ejercicio`).
+- `src/types/types.ts` — Tipos TypeScript para datos y acciones.
 
 ---
 
 ## Uso
 
-- Navega la colección de guitarras.
-- Añade guitarras al carrito usando el botón “Agregar al Carrito”.
-- Controla las cantidades desde el carrito desplegable en el header.
-- Elimina productos o vacía todo el carrito con un botón dedicado.
-- El total a pagar se calcula automáticamente.
+1. Ingresa una actividad desde el formulario seleccionando la categoría (Comida o Ejercicio), nombre y calorías.  
+2. Visualiza la lista de actividades registradas debajo del formulario.  
+3. Edita o elimina una actividad existente desde la lista.  
+4. Observa en tiempo real cómo cambian los totales de calorías consumidas, quemadas y netas en el resumen superior.  
+5. Usa el botón en la esquina superior derecha para reiniciar la aplicación y borrar todas las actividades registradas.
 
 ---
 
 ## Próximas mejoras
 
-- Integrar sistema de checkout y pagos.
-- Añadir filtros y búsqueda.
-- Mejorar diseño y responsividad.
-- Implementar autenticación de usuarios.
+- Filtros por fecha o categoría.
+- Exportación de datos en CSV/JSON.
+- Gráficos estadísticos semanales/mensuales.
+- Autenticación para usuarios múltiples.
 
 ---
 
 ## Capturas de Pantalla
 
-1. **Página principal:** muestra la colección completa de guitarras disponibles para comprar.  
-![Página principal con productos](/img/carritoCompras1.png)
+1. **Estado inicial:** vista inicial de la aplicación sin actividades registradas. El botón para reiniciar la app está deshabilitado.  
+![Estado inicial](/img/calorias1.png)
 
-2. **Carrito vacío:** vista inicial del carrito cuando aún no se han agregado productos.  
-![Carrito vacío](/img/carritoCompras2.png)
+2. **Actividades registradas:** muestra la lista de actividades clasificadas como comida o ejercicio, con sus respectivas calorías. Cada actividad tiene botones para editar o eliminar.  
+![Actividades registradas](/img/calorias2.png)
 
-3. **Carrito con productos:** muestra el carrito con items agregados, donde se puede modificar cantidad y ver el total en tiempo real.  
-![Carrito con productos y total](/img/carritoCompras3.png)
+3. **Calorías actualizadas:** resumen de calorías consumidas, quemadas y totales, actualizado en tiempo real al modificar las actividades.  
+![Calorías actualizadas](/img/calorias3.png)
 
 ---
 
